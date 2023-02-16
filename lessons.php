@@ -1,26 +1,33 @@
 <?php
-$arr1 = [];
-$arr2 = [];
-$arrLengh = 15;
+$numbers = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
 
-for ($i = 0; $i < $arrLengh; $i++) {
-    $arr1[$i] = rand(1, 9);
-    $arr2[$i] = rand(1, 9);
-    $arrRes[$i] = $arr1[$i] * $arr2[$i];
+$result = array_map(function (int $numbers) {
+    return $numbers % 2;
+}, $numbers);
+
+print_r($result);
+
+foreach ($result as $value) {
+    if (gettype($value) === "double") {
+        echo 'нечётное' . PHP_EOL;
+    } else
+        echo 'чётное' . PHP_EOL;
 }
+;
 
-print_r($arrRes);
+#2
+
+$arr = [3, 6, 1, 12, 7, 9];
+
+$arrFunc = function ($number) {
 
 
+    return [
+        'max' => max($number),
+        'min' => min($number),
+        'summ' => array_sum($number) / count($number),
+    ];
+};
 
-$array1 = ['космического', 'бесконечного', 'безудержного'];
-$array2 = ['здоровья', 'воображения', 'терпения'];
-$arrResult = [];
 
-for ($i = 0; $i < 3; $i++) {
-    $arrResult[] = $array1[array_rand($array1)] . ' ' . $array2[array_rand($array2)];
-}
-
-print_r($arrResult);
-
-echo "Дорогой человек, желаем вам " . implode(',', $arrResult);
+print_r($arrFunc($arr));
