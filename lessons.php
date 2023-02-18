@@ -1,18 +1,33 @@
-<?php 
+<?php
+$numbers = [4, 5, 1, 4, 7, 8, 15, 6, 71, 45, 2];
 
-    $name = readline("Ваше имя? \n");
-    $age = readline("Сколько вам лет? \n");
-    echo "Ваше имя $name \nВаш возраст: $age\n";
+$result = array_map(function (int $numbers) {
+    return $numbers % 2;
+}, $numbers);
+
+print_r($result);
+
+foreach ($result as $value) {
+    if (gettype($value) === "double") {
+        echo 'нечётное' . PHP_EOL;
+    } else
+        echo 'чётное' . PHP_EOL;
+}
+;
+
+#2
+
+$arr = [3, 6, 1, 12, 7, 9];
+
+$arrFunc = function ($number) {
 
 
-    $name = readline("Ваше имя? \n");
-    $task1 = readline("Какая задача стоит перед вами сегодня? \n");
-    $time1 = readline("Сколько времени займёт эта задача?");
-    $task2 = readline("Какая задача стоит перед вами сегодня? \n");
-    $time2 = readline("Сколько времени займёт эта задача?");
-    $task3 = readline("Какая задача стоит перед вами сегодня? \n");
-    $time3 = readline("Сколько времени займёт эта задача?");
+    return [
+        'max' => max($number),
+        'min' => min($number),
+        'summ' => array_sum($number) / count($number),
+    ];
+};
 
-    echo "$task1 ($time1) \n";
-    echo "$task2 ($time2) \n";
-    echo "$task3 ($time3) \n";
+
+print_r($arrFunc($arr));
